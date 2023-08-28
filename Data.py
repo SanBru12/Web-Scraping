@@ -18,13 +18,13 @@ def get_AnimeTitle(url):
     ReturnTitles = []  # Aquí almacenaremos los títulos
     
     for div in DivTitle:
-        strong_elements = div.find('strong')
-        
-        title_text = strong_elements.get_text()
+        title_text = div.get_text()
         ReturnTitles.append(title_text)
     return ReturnTitles
 
+
 def get_AnimeImage(url):
+    count = 0
     response = requests.get(url)
     soup = BeautifulSoup(response.content, "html.parser")
     DivImage = soup.select('.Image')
@@ -33,7 +33,10 @@ def get_AnimeImage(url):
         img = img_tag.find('img')  
         if img:
             image_src = img['src']  
-            ReturnImage.append(image_src)
+            ReturnImage.append(url + image_src)
+            count = count + 1
+            if count == 5:
+                break
 
     return ReturnImage    
 
@@ -41,5 +44,4 @@ def get_AnimeImage(url):
 if __name__ == "__main__":
     url = get_url()
     img = get_AnimeImage(url)
-    name = get_AnimeTitle(url)
-    print(name)
+    print(img)
