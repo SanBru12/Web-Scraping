@@ -18,10 +18,12 @@ def get_AnimeTitle(url):
     soup = BeautifulSoup(response.content, "html.parser")
     DivTitle = soup.select(".Title")
     ReturnTitles = []  # Aquí almacenaremos los títulos
-
+    count = 0
     for div in DivTitle:
-        title_text = div.get_text()
-        ReturnTitles.append(title_text)
+        count = count + 1
+        if count > 2:
+            title_text = div.get_text()
+            ReturnTitles.append(title_text)
     return ReturnTitles
 
 
