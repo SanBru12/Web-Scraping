@@ -15,10 +15,7 @@ root = Tk()
 root.title("Anime FLV")
 root.geometry("1080x720")
 root.iconbitmap(
-    "C:\\Users\\tiago\\Desktop\\Proyectos\\PYTHON\\Prog3\\PytonBeautifulSoup\\Icono.ico"
-)
-image = (
-    "C:\\Users\\tiago\\Desktop\\Proyectos\\PYTHON\\Prog3\\PytonBeautifulSoup\\Fondo.png"
+    "Icono.ico"
 )
 # Create A Main Frame
 main_frame = Frame(root)
@@ -42,6 +39,7 @@ Second_frame = Frame(My_Canvas)
 My_Canvas.create_window((0, 0), window=Second_frame, anchor="nw")
 
 # ************************************ Funciones ************************************************
+
 loading_label = ""
 TextosFiltrado = []
 image_labels = []
@@ -73,18 +71,12 @@ def BuscarAnimeTop20():
     Txt_AnimeImagen = Data.get_AnimeImage(txt_url, 20)
     eliminar_resultados_anteriores()
     loading_label = mostrar_alerta_cargando()
-    count = 0
-    for Textos in Txt_AnimeTitulo:
-        count = count + 1
-        if count > 2:
-            TextosFiltrado.append(Textos)
 
     Titulo = tk.Label(Second_frame, text=txt_Titulo, font=("Arial", 32))
     Titulo.pack(pady=20)
     Titulos.append(Titulo)
 
-    for DivsTitulos, imagen in zip(TextosFiltrado, Txt_AnimeImagen):
-        print(DivsTitulos, imagen)
+    for DivsTitulos, imagen in zip(Txt_AnimeTitulo, Txt_AnimeImagen):
         # Descargar la imagen desde la URL
         LblTexto = tk.Label(Second_frame, text=DivsTitulos, font=("Arial", 8))
         LblTexto.pack(pady=20)
@@ -112,17 +104,12 @@ def BuscarAnimeTop5():
     Txt_AnimeImagen = Data.get_AnimeImage(txt_url, 5)
     eliminar_resultados_anteriores()
     loading_label = mostrar_alerta_cargando()
-    count = 0
-    for Textos in Txt_AnimeTitulo:
-        count = count + 1
-        if count > 2:
-            TextosFiltrado.append(Textos)
 
     Titulo = tk.Label(Second_frame, text=txt_Titulo, font=("Arial", 32))
     Titulo.pack(pady=20)
     Titulos.append(Titulo)
-    for DivsTitulos, imagen in zip(TextosFiltrado, Txt_AnimeImagen):
-        print(DivsTitulos, imagen)
+
+    for DivsTitulos, imagen in zip(Txt_AnimeTitulo, Txt_AnimeImagen):
         # Descargar la imagen desde la URL
         LblTexto = tk.Label(Second_frame, text=DivsTitulos, font=("Arial", 8))
         LblTexto.pack(pady=20)
