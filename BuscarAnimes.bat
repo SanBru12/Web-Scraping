@@ -1,1 +1,1 @@
-start /B C:\\Users\\tiago\\Desktop\\Proyectos\\PYTHON\\Prog3\\PytonBeautifulSoup\\Program.py
+start /B Program.py
